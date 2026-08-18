@@ -200,6 +200,23 @@ describe("crawler document on the same origin", () => {
   })
 })
 
+describe("Vercel preview document on the same origin family", () => {
+  it("tells crawlers not to index a preview host", async () => {
+    const origin = process.env.PREVIEW_ORIGIN
+    expect(origin).toBeTruthy()
+    const page = await fetch(`${origin}/`)
+    const html = await page.text()
+    expect(page.status).toBe(200)
+    expect(html).toMatch(/noindex/)
+
+    const robots = await fetch(`${origin}/robots.txt`)
+    const robotsBody = await robots.text()
+    expect(robots.status).toBe(200)
+    expect(robotsBody).toMatch(/Disallow:\s*\//)
+    expect(robotsBody).not.toMatch(/Allow:\s*\/\s*$/m)
+  })
+})
+
 function headerHtml(document: string): string {
   const match = document.match(/<header\b[^>]*>[\s\S]*?<\/header>/i)
   if (!match) {
