@@ -36,7 +36,7 @@ export function Repertoire() {
           data-repertoire-snap
           tabIndex={0}
           aria-label={REPERTOIRE_LABEL}
-          className="flex snap-x snap-mandatory gap-8 overflow-x-auto px-6 py-8 max-md:motion-safe:animate-nudge-x md:mx-auto md:max-w-5xl md:flex-col md:overflow-visible md:px-6 md:py-16 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-taupe"
+          className="flex snap-x snap-mandatory gap-8 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden px-6 py-8 max-md:motion-safe:animate-nudge-x md:mx-auto md:max-w-5xl md:flex-col md:overflow-visible md:px-6 md:py-16 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-taupe"
         >
           {LANES.map((item, itemIndex) => (
             <article

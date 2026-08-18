@@ -45,20 +45,18 @@ export function Chrome() {
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3 motion-safe:animate-enter">
               <Button
                 asChild
-                variant="outline"
-                className="rounded-none border-ink bg-cream px-5 py-2.5 hover:bg-secondary"
+                className="rounded-none bg-ink px-6 py-2.5 text-cream hover:bg-ink/90"
               >
-                <a href={TEL}>
+                <a href={TEL} className="text-cream">
                   <Phone className="size-4" strokeWidth={1.5} />
                   {CTA_CALL}
                 </a>
               </Button>
               <Button
                 asChild
-                variant="outline"
-                className="rounded-none border-ink bg-cream px-5 py-2.5 hover:bg-secondary"
+                className="rounded-none bg-ink px-6 py-2.5 text-cream hover:bg-ink/90"
               >
-                <a href={VIBER}>
+                <a href={VIBER} className="text-cream">
                   <MessageCircle className="size-4" strokeWidth={1.5} />
                   {CTA_VIBER_WRITE}
                 </a>
