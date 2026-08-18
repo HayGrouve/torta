@@ -21,7 +21,7 @@ The locked description of the marketing site — pages, tone, content, conversio
 _Avoid_: live site, production implementation
 
 **Baker**:
-Илияна — the person who makes the sweets. She appears on the marketing site as first name only, in Cyrillic, in a byline («сладкиши от Илияна») and About, not in the header or wordmark.
+Илияна — the person who makes the sweets. She appears on the marketing site as first name only, in Cyrillic, in a byline («сладкиши от Илияна») and as the About heading, not in the header or wordmark.
 _Avoid_: owner, user, chef, her legal surname in chrome
 
 **Visitor**:
@@ -51,6 +51,10 @@ _Avoid_: menu, SKU list, custom orders as a product name, понички, сва
 **Made to order**:
 Every piece is baked after inquiry, from the repertoire. Nothing is held as stock.
 _Avoid_: shelf, walk-in, stock, made-ahead
+
+**House line**:
+«Нашият десерт по ваш вкус!» — the public catchphrase on the marketing site, under the Iliaora wordmark.
+_Avoid_: slogan, English tagline, replacing the byline
 
 **Inquiry**:
 A call or Viber message to the baker to order everyday sweets or an occasion cake. Pickup, local drop-off, travel, ingredients, and allergens are arranged or confirmed there. There is no street address on the marketing site.

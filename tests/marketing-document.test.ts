@@ -1,34 +1,53 @@
 import { describe, expect, it } from "vitest"
+import {
+  ABOUT,
+  ALLERGEN,
+  HERO,
+  HOUSE_LINE,
+  HOW_IT_WORKS,
+  IG,
+  LANES,
+  PHONE_LABEL,
+  PRIVACY,
+  SITE_TITLE,
+  TEL,
+  VIBER,
+} from "#/marketing/copy.ts"
 import { getPublicDocument } from "./document.ts"
-
-const IG = "https://www.instagram.com/iliaora_bakery/"
-const TEL = "tel:+359879932060"
-const VIBER = "viber://chat?number=%2B359879932060"
-const PHONE_LABEL = "0879932060"
-const TITLE = "Iliaora — сладкиши от Илияна"
-const HERO =
-  "Сладкиши по поръчка в София. Торти, донъти и торти за повод — печени за Вас, без витрина."
 
 describe("GET / public marketing document", () => {
   it("is a Bulgarian document titled with the house and baker", async () => {
     const { status, body } = await getPublicDocument("/")
     expect(status).toBe(200)
     expect(body).toMatch(/<html[^>]*lang="bg"/)
-    expect(body).toContain(`<title>${TITLE}</title>`)
+    expect(body).toContain(`<title>${SITE_TITLE}</title>`)
   })
 
-  it("shows Iliaora in the header with the two inquiry CTAs", async () => {
+  it("shows Iliaora and the catalog in the header", async () => {
     const { body } = await getPublicDocument("/")
     const header = headerHtml(body)
     expect(header).toContain("Iliaora")
     expect(header).not.toContain("Илияна")
     expect(header).toContain("Вижте в Instagram")
     expect(header).toContain('href="https://www.instagram.com/iliaora_bakery/"')
-    expect(header).toContain("Обадете се")
-    expect(header).toContain("пишете във Viber")
-    expect(header.match(/Обадете се/g)?.length).toBe(1)
-    expect(header).toContain(`href="${TEL}"`)
-    expect(header).toContain(`href="${VIBER}"`)
+    expect(header).not.toContain("Обадете се")
+    expect(header).not.toContain("пишете във Viber")
+    expect(header).not.toContain(`href="${TEL}"`)
+    expect(header).not.toContain(`href="${VIBER}"`)
+  })
+
+  it("puts inquiry in the hero as call and Viber", async () => {
+    const { body } = await getPublicDocument("/")
+    const headerEnd = body.indexOf("</header>")
+    const stillAt = body.indexOf("<img")
+    const heroChrome = body.slice(headerEnd, stillAt)
+    expect(heroChrome).toContain(HERO)
+    expect(heroChrome).toContain(HOUSE_LINE)
+    expect(heroChrome).toContain("Обадете се")
+    expect(heroChrome).toContain("пишете във Viber")
+    expect(heroChrome.match(/Обадете се/g)?.length).toBe(1)
+    expect(heroChrome).toContain(`href="${TEL}"`)
+    expect(heroChrome).toContain(`href="${VIBER}"`)
   })
 
   it("names the baker only in the byline near the hero", async () => {
@@ -56,16 +75,13 @@ describe("GET / public marketing document", () => {
   it("explains how the house works: inquire, baked for you, pickup or travel", async () => {
     const { body } = await getPublicDocument("/")
     const heroAt = body.indexOf(HERO)
-    const step1At = body.indexOf("Обадете се или пишете във Viber")
-    const step1BodyAt = body.indexOf("Един номер за София и за торта за повод.")
-    const step2At = body.indexOf("Печем за Вас")
-    const step2BodyAt = body.indexOf(
-      "По поръчка, от репертоара. Нищо не стои на витрина.",
-    )
-    const step3At = body.indexOf("Вземане или пътуване")
-    const step3BodyAt = body.indexOf(
-      "София — по уговорка. Торта за повод може да пътува в България.",
-    )
+    const [step1, step2, step3] = HOW_IT_WORKS
+    const step1At = body.indexOf(step1.title)
+    const step1BodyAt = body.indexOf(step1.body)
+    const step2At = body.indexOf(step2.title)
+    const step2BodyAt = body.indexOf(step2.body)
+    const step3At = body.indexOf(step3.title)
+    const step3BodyAt = body.indexOf(step3.body)
     expect(heroAt).toBeGreaterThan(-1)
     expect(step1BodyAt).toBeGreaterThan(heroAt)
     expect(step1At).toBeGreaterThan(-1)
@@ -83,13 +99,8 @@ describe("GET / public marketing document", () => {
     const { body } = await getPublicDocument("/")
     const order = [
       HERO,
-      "Един номер за София и за торта за повод.",
-      "За деня — по поръчка.",
-      "По-малки торти за рожден ден, офис, подарък. София. Печем след обаждането.",
-      "Не от витрина.",
-      "Донъти, когато ги поискате. Примери за работа — в Instagram.",
-      "Сватба и голямо тържество.",
-      "Може да пътува в България по уговорка. Цена според тортата — попитайте.",
+      HOW_IT_WORKS[0].body,
+      ...LANES.flatMap((lane) => [lane.title, lane.body]),
     ]
     let cursor = -1
     for (const snippet of order) {
@@ -111,8 +122,8 @@ describe("GET / public marketing document", () => {
     expect(alts.every((alt) => alt.length > 0)).toBe(true)
 
     const fullBleedAt = body.indexOf(stills[0] ?? "")
-    const howItWorksAt = body.indexOf("Един номер за София и за торта за повод.")
-    const tortiAt = body.indexOf("За деня — по поръчка.")
+    const howItWorksAt = body.indexOf(HOW_IT_WORKS[0].body)
+    const tortiAt = body.indexOf(LANES[0].title)
     expect(fullBleedAt).toBeGreaterThan(body.indexOf(HERO))
     expect(howItWorksAt).toBeGreaterThan(fullBleedAt)
     expect(tortiAt).toBeGreaterThan(howItWorksAt)
@@ -122,15 +133,9 @@ describe("GET / public marketing document", () => {
 
   it("names the baker in За нас and repeats inquiry in the footer", async () => {
     const { body } = await getPublicDocument("/")
-    const about =
-      "Пече по поръчка в София. Iliaora е името на къщата; тя е в подписа и тук — не в логото."
-    const allergen = "Съставки и алергени потвърждаваме при запитване."
-    const privacy =
-      "Маркетинговият сайт не приема поръчки и не съхранява запитвания. Обаждане и Viber са извън сайта."
-
-    const lanesAt = body.indexOf("Сватба и голямо тържество.")
+    const lanesAt = body.indexOf(LANES[2].title)
     const aboutHeadingAt = body.indexOf("За нас")
-    const aboutAt = body.indexOf(about)
+    const aboutAt = body.indexOf(ABOUT)
     const footerMatch = body.match(/<footer\b[^>]*>[\s\S]*?<\/footer>/i)
     expect(footerMatch).not.toBeNull()
     const footer = footerMatch?.[0] ?? ""
@@ -138,14 +143,15 @@ describe("GET / public marketing document", () => {
     expect(aboutHeadingAt).toBeGreaterThan(lanesAt)
     expect(aboutAt).toBeGreaterThan(aboutHeadingAt)
     expect(body).toContain("Илияна")
-    expect(body).toContain(allergen)
+    expect(body).toContain(ALLERGEN)
     expect(footer).toContain("Iliaora")
     expect(footer).toContain("София")
     expect(footer).toContain(PHONE_LABEL)
     expect(footer).toContain(`href="${TEL}"`)
+    expect(footer).toContain(`href="${VIBER}"`)
     expect(footer).toContain(`href="${IG}"`)
     expect(footer).toContain("Instagram")
-    expect(footer).toContain(privacy)
+    expect(footer).toContain(PRIVACY)
     expect(body).not.toMatch(/ЕИК|седалище|ул\.|улица /)
     expect(body).not.toMatch(/\/privacy/)
     expect(body).not.toMatch(/Instagram DM|съобщение в Instagram/i)
@@ -155,7 +161,7 @@ describe("GET / public marketing document", () => {
 describe("crawler document on the same origin", () => {
   it("exposes Bulgarian Open Graph, Twitter, and JSON-LD for the house", async () => {
     const { body } = await getPublicDocument("/")
-    expect(body).toContain(`content="${TITLE}"`)
+    expect(body).toContain(`content="${SITE_TITLE}"`)
     expect(body).toContain(`content="${HERO}"`)
     expect(body).toContain('property="og:locale"')
     expect(body).toContain("bg_BG")
