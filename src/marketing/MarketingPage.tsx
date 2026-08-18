@@ -5,7 +5,6 @@ import {
   IG,
   PHONE_LABEL,
   PRIVACY,
-  STILLS,
   TEL,
   VIBER,
 } from "#/marketing/copy.ts"
@@ -17,12 +16,6 @@ export function MarketingPage() {
   return (
     <div className="min-h-svh bg-cream font-sans text-ink">
       <Chrome />
-
-      <img
-        src={STILLS.fullBleed.src}
-        alt={STILLS.fullBleed.alt}
-        className="h-[70vh] w-full object-cover"
-      />
 
       <HowItWorks />
 

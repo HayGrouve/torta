@@ -8,6 +8,7 @@ import {
   HERO,
   HOUSE_LINE,
   IG,
+  STILLS,
   TEL,
   VIBER,
 } from "#/marketing/copy.ts"
@@ -26,40 +27,53 @@ export function Chrome() {
           </a>
         </Button>
       </header>
-      <section className="mx-auto max-w-3xl px-6 pb-16 pt-10 text-center">
-        <p className="font-sans text-sm tracking-[0.22em] text-taupe">{BYLINE}</p>
-        <h1 className="mt-4 font-serif text-6xl leading-[0.95] sm:text-8xl">
-          Iliaora
-        </h1>
-        <p className="mt-5 font-serif text-2xl italic text-ink/80 sm:text-3xl">
-          {HOUSE_LINE}
-        </p>
-        <p className="mx-auto mt-6 max-w-md text-base leading-relaxed text-ink/80">
-          {HERO}
-        </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3 motion-safe:animate-enter">
-          <Button
-            asChild
-            variant="outline"
-            className="rounded-none border-ink bg-transparent px-5 py-2.5"
-          >
-            <a href={TEL}>
-              <Phone className="size-4" strokeWidth={1.5} />
-              {CTA_CALL}
-            </a>
-          </Button>
-          <Button
-            asChild
-            variant="outline"
-            className="rounded-none border-ink bg-transparent px-5 py-2.5"
-          >
-            <a href={VIBER}>
-              <MessageCircle className="size-4" strokeWidth={1.5} />
-              {CTA_VIBER_WRITE}
-            </a>
-          </Button>
+      <div>
+        <div className="relative">
+          <section className="relative z-10 mx-auto max-w-3xl px-6 pb-16 pt-10 text-center">
+            <p className="font-sans text-sm tracking-[0.22em] text-taupe">
+              {BYLINE}
+            </p>
+            <h1 className="mt-4 font-serif text-6xl leading-[0.95] sm:text-8xl">
+              Iliaora
+            </h1>
+            <p className="mt-5 font-serif text-2xl italic text-ink/80 sm:text-3xl">
+              {HOUSE_LINE}
+            </p>
+            <p className="mx-auto mt-6 max-w-md text-base leading-relaxed text-ink/80">
+              {HERO}
+            </p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3 motion-safe:animate-enter">
+              <Button
+                asChild
+                variant="outline"
+                className="rounded-none border-ink bg-cream px-5 py-2.5 hover:bg-secondary"
+              >
+                <a href={TEL}>
+                  <Phone className="size-4" strokeWidth={1.5} />
+                  {CTA_CALL}
+                </a>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                className="rounded-none border-ink bg-cream px-5 py-2.5 hover:bg-secondary"
+              >
+                <a href={VIBER}>
+                  <MessageCircle className="size-4" strokeWidth={1.5} />
+                  {CTA_VIBER_WRITE}
+                </a>
+              </Button>
+            </div>
+          </section>
+          <img
+            src={STILLS.fullBleed.src}
+            alt={STILLS.fullBleed.alt}
+            className="absolute top-1/2 left-0 h-[70vh] w-full object-cover"
+          />
+          <div className="pointer-events-none absolute inset-x-0 top-1/2 h-1/2 bg-gradient-to-b from-cream to-transparent" />
         </div>
-      </section>
+        <div className="h-[70vh]" aria-hidden="true" />
+      </div>
     </>
   )
 }
