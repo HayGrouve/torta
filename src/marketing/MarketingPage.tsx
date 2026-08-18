@@ -21,10 +21,12 @@ export function MarketingPage() {
 
       <Repertoire />
 
-      <section className="mx-auto max-w-xl px-6 py-24 text-center motion-safe:animate-enter">
-        <p className="text-sm tracking-[0.2em] uppercase">За нас</p>
-        <h2 className="mt-3 font-serif text-4xl">Илияна — сладкар</h2>
-        <p className="mt-4 text-base leading-relaxed text-ink/80">{ABOUT}</p>
+      <section className="bg-ink px-6 py-24 text-center text-cream motion-safe:animate-enter">
+        <div className="mx-auto max-w-xl">
+          <p className="text-sm tracking-[0.2em] uppercase text-cream/80 mb-10">За нас</p>
+          <h2 className="mt-3 font-serif text-4xl">Илияна — сладкар</h2>
+          <p className="mt-4 text-base leading-relaxed text-cream/80">{ABOUT}</p>
+        </div>
       </section>
 
       <footer className="border-t border-ink/15 px-6 py-10 text-center text-sm">
