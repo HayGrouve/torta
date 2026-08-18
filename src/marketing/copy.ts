@@ -6,7 +6,6 @@ export const PHONE_LABEL = "0879932060"
 export const SITE_TITLE = "Iliaora — сладкиши от Илияна"
 export const HERO =
   "Десерти по поръчка в София. Торти, десерти и сладкиши за поводи — печени за Вас."
-export const BYLINE = "сладкиши от Илияна"
 export const HOUSE_LINE = "Нашият десерт по ваш вкус!"
 export const CTA_INSTAGRAM = "Вижте в Instagram"
 export const CTA_CALL = "Обадете се"

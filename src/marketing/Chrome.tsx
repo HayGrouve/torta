@@ -1,7 +1,6 @@
 import { Instagram, MessageCircle, Phone } from "lucide-react"
 import { Button } from "#/components/ui/button.tsx"
 import {
-  BYLINE,
   CTA_CALL,
   CTA_INSTAGRAM,
   CTA_VIBER_WRITE,
@@ -30,10 +29,7 @@ export function Chrome() {
       <div>
         <div className="relative">
           <section className="relative z-10 mx-auto max-w-3xl px-6 pb-16 pt-10 text-center">
-            <p className="font-sans text-sm tracking-[0.22em] text-taupe">
-              {BYLINE}
-            </p>
-            <h1 className="mt-4 font-serif text-6xl leading-[0.95] sm:text-8xl">
+            <h1 className="font-serif text-6xl leading-[0.95] sm:text-8xl">
               Iliaora
             </h1>
             <p className="mt-5 font-serif text-2xl italic text-ink/80 sm:text-3xl">

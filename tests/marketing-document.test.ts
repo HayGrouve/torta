@@ -50,9 +50,9 @@ describe("GET / public marketing document", () => {
     expect(heroChrome).toContain(`href="${VIBER}"`)
   })
 
-  it("names the baker only in the byline near the hero", async () => {
+  it("names the baker in the title and keeps inquiry on the hero", async () => {
     const { body } = await getPublicDocument("/")
-    expect(body).toContain("сладкиши от Илияна")
+    expect(body).toContain(`<title>${SITE_TITLE}</title>`)
     expect(body).toContain(HERO)
     expect(body).toContain(PHONE_LABEL)
     expect(body).toContain(`href="${IG}"`)
