@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 import { LANES } from "#/marketing/copy.ts"
 import { useSnapIndex } from "#/marketing/use-snap-index.ts"
 
-const REPERTOIRE_LABEL = "Репертоар: торти, донъти и торти за повод"
+const REPERTOIRE_LABEL = "Репертоар: торти, сладкиши и торти за повод"
 
 function scrollToLane(scroller: HTMLDivElement, next: number) {
   const child = scroller.children[next]

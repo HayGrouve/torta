@@ -23,7 +23,7 @@ export function MarketingPage() {
 
       <section className="mx-auto max-w-xl px-6 py-24 text-center motion-safe:animate-enter">
         <p className="text-sm tracking-[0.2em] uppercase">За нас</p>
-        <h2 className="mt-3 font-serif text-4xl">Илияна - сладкар</h2>
+        <h2 className="mt-3 font-serif text-4xl">Илияна — сладкар</h2>
         <p className="mt-4 text-base leading-relaxed text-ink/80">{ABOUT}</p>
       </section>
 

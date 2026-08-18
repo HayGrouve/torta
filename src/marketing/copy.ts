@@ -9,8 +9,8 @@ export const HERO =
 export const HOUSE_LINE = "Нашият десерт по ваш вкус!"
 export const CTA_INSTAGRAM = "Вижте в Instagram"
 export const CTA_CALL = "Обадете се"
-export const CTA_VIBER_WRITE = "пишете във Viber"
-export const CTA_INQUIRY = `${CTA_CALL} или ${CTA_VIBER_WRITE}`
+export const CTA_VIBER_WRITE = "Пишете във Viber"
+export const CTA_INQUIRY = `${CTA_CALL} или пишете във Viber`
 
 export const SITE_URL = "https://iliaora.com"
 export const TELEPHONE_E164 = "+359879932060"
@@ -24,12 +24,12 @@ export const HOW_IT_WORKS = [
   {
     n: "02",
     title: "Печем за Вас",
-    body: "По поръчка, приготвено за Вас.",
+    body: "По поръчка, приготвени за Вас.",
   },
   {
     n: "03",
-    title: "Вземане или ни повикайте",
-    body: "София — лична среща. Може да пътуваме в България.",
+    title: "Вземете или ни повикайте",
+    body: "София — лична среща. Можем да пътуваме в България.",
   },
 ] as const
 
@@ -44,7 +44,7 @@ export const STILLS = {
   },
   donti: {
     src: "/stills/donti.jpg",
-    alt: "Донът от Iliaora",
+    alt: "Сладкиши от Iliaora",
   },
   povod: {
     src: "/stills/povod.jpg",
@@ -60,9 +60,9 @@ export const LANES = [
     still: STILLS.torti,
   },
   {
-    kicker: "Донъти",
+    kicker: "Сладкиши",
     title: "Не от витрина.",
-    body: "Донъти, когато ги поискате. Примери за работа — в Instagram.",
+    body: "Сладкиши, когато ги поискате. Примери от работата ни — в Instagram.",
     still: STILLS.donti,
   },
   {
@@ -75,6 +75,6 @@ export const LANES = [
 
 export const ABOUT =
   "Тайната на вкусния десерт се пази от готината ни сладкарка ;)"
-export const ALLERGEN = "Съставки и алергени потвърждаваме при запитване."
+export const ALLERGEN = "Съставките и алергените потвърждаваме при запитване."
 export const PRIVACY =
   "Маркетинговият сайт не приема поръчки и не съхранява запитвания."

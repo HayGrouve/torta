@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest"
 import {
   ABOUT,
   ALLERGEN,
+  CTA_VIBER_WRITE,
   HERO,
   HOUSE_LINE,
   HOW_IT_WORKS,
@@ -31,7 +32,7 @@ describe("GET / public marketing document", () => {
     expect(header).toContain("Вижте в Instagram")
     expect(header).toContain('href="https://www.instagram.com/iliaora_bakery/"')
     expect(header).not.toContain("Обадете се")
-    expect(header).not.toContain("пишете във Viber")
+    expect(header).not.toContain(CTA_VIBER_WRITE)
     expect(header).not.toContain(`href="${TEL}"`)
     expect(header).not.toContain(`href="${VIBER}"`)
   })
@@ -44,7 +45,7 @@ describe("GET / public marketing document", () => {
     expect(heroChrome).toContain(HERO)
     expect(heroChrome).toContain(HOUSE_LINE)
     expect(heroChrome).toContain("Обадете се")
-    expect(heroChrome).toContain("пишете във Viber")
+    expect(heroChrome).toContain(CTA_VIBER_WRITE)
     expect(heroChrome.match(/Обадете се/g)?.length).toBe(1)
     expect(heroChrome).toContain(`href="${TEL}"`)
     expect(heroChrome).toContain(`href="${VIBER}"`)

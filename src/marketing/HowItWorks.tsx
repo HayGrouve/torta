@@ -1,8 +1,8 @@
-import { CookingPot, MapPin, MessageCircle, Phone } from "lucide-react"
+import { CookingPot, MapPin, Phone } from "lucide-react"
 import { ALLERGEN, HOW_IT_WORKS } from "#/marketing/copy.ts"
 
 const STEP_ICONS = [
-  [Phone, MessageCircle],
+  [Phone],
   [CookingPot],
   [MapPin],
 ] as const
