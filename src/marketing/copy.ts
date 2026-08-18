@@ -8,7 +8,9 @@ export const HERO =
   "Сладкиши по поръчка в София. Торти, донъти и торти за повод — печени за Вас, без витрина."
 export const BYLINE = "сладкиши от Илияна"
 export const CTA_INSTAGRAM = "Вижте в Instagram"
-export const CTA_INQUIRY = "Обадете се или пишете във Viber"
+export const CTA_CALL = "Обадете се"
+export const CTA_VIBER_WRITE = "пишете във Viber"
+export const CTA_INQUIRY = `${CTA_CALL} или ${CTA_VIBER_WRITE}`
 
 export const SITE_URL = "https://iliaora.com"
 export const TELEPHONE_E164 = "+359879932060"

@@ -3,8 +3,10 @@ import {
   ABOUT,
   ALLERGEN,
   BYLINE,
+  CTA_CALL,
   CTA_INQUIRY,
   CTA_INSTAGRAM,
+  CTA_VIBER_WRITE,
   HERO,
   HOW_IT_WORKS,
   IG,
@@ -27,12 +29,13 @@ export function MarketingPage() {
           <Button asChild variant="link" className="h-auto p-0">
             <a href={IG}>{CTA_INSTAGRAM}</a>
           </Button>
-          <span className="flex flex-wrap items-baseline gap-x-3">
+          <span className="flex flex-wrap items-baseline gap-x-1">
             <Button asChild variant="link" className="h-auto p-0">
-              <a href={TEL}>{CTA_INQUIRY}</a>
+              <a href={TEL}>{CTA_CALL}</a>
             </Button>
+            <span>или</span>
             <Button asChild variant="link" className="h-auto p-0">
-              <a href={VIBER}>{CTA_INQUIRY}</a>
+              <a href={VIBER}>{CTA_VIBER_WRITE}</a>
             </Button>
           </span>
         </nav>
